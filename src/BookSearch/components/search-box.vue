@@ -1,7 +1,7 @@
 <template>
     <div class="search_box">
-        <input class="input search_text" type="text" placeholder="Search Text">
-        <a class="button is-dark search_button">Search</a>
+        <input class="input search_text" type="text" placeholder="Search Text" v-model="inputText" @keyup.enter="showBookList">
+        <a class="button is-dark search_button" @click="showBookList">Search</a>
     </div>
 </template>
 
@@ -10,30 +10,32 @@ import Spinner from '../../modules/Spinner/Spinner';
 import GetBookData from '../GetBookData';
 export default {
     name: 'search-box',
-    data() {},
+    methods: {
+        showBookList() {
+            //todo スピナーが表示されない
+            const spinner = new Spinner();
+            spinner.show();
+            try {
+                // const thisElement = this.$el;
+                // const inputText = thisElement.getElementsByClassName('search_text')[0].value;
+                const that = this;
+                GetBookData.getAllFromGoogleBook(this.inputText, 30).then(bookDatas => {
+                    console.log(bookDatas);
+                    that.$parent.bookDatas = bookDatas;
+                });
+            } catch (e) {
+                alert(e);
+            } finally {
+                spinner.hide();
+            }
+        },
+    },
+    data() {
+        return {
+            inputText: ''
+        }
+    },
     mounted() {
-        const thisElement = this.$el;
-        const searchBtn = thisElement.getElementsByClassName('search_button')[0];
-        searchBtn.addEventListener(
-            'click',
-            () => {
-                // todo スピナーが表示されない !!!!!!!!!!!!
-                const spinner = new Spinner();
-                spinner.show();
-                try {
-                    const inputText = thisElement.getElementsByClassName('search_text')[0].value;
-                    const that = this;
-                    GetBookData.getAllFromGoogleBook(inputText, 30).then(bookDatas => {
-                        that.$parent.bookDatas = bookDatas;
-                    });
-                } catch (e) {
-                    alert(e);
-                } finally {
-                    spinner.hide();
-                }
-            },
-            false
-        );
     },
 };
 </script>

@@ -9,7 +9,7 @@
             </template>
         </p>
         <p class="page_cnt">p{{volumeInfo.pageCount}}</p>
-        <!--thumbnail-->
+        <!--thumbnail todo volumeInfo.imageLinks.thumbnail が https:// ではなく http:// なのでwarningがでる -->
         <template v-if="volumeInfo.imageLinks != null">
             <img class="thumbnail" :src="volumeInfo.imageLinks.thumbnail"/><!--or smallThumbnail-->
         </template>
