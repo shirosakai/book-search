@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Search</title>
+    
+    <script>
+        // GoogleBooksApiが便利...書影も取れる
+        // https://developers.google.com/books/docs/v1/reference/volumes
+        // 検索... https://developers.google.com/books/docs/v1/reference/volumes/list
+        fetch('https://www.googleapis.com/books/v1/volumes?q=HarukiMurakami')
+            .then(resp => resp.json())
+            .then(resp => {
+                console.log(resp);
+        }).catch(error => {
+           console.log(error);
+        });
+    </script>
+
+</head>
+<body>
+
+<div id="app"></div>
+
+<!-- この場所にないとVueがうまく動かない -->
+<script type="text/javascript" src="BookSearch.bundle.js"></script>
+<script type="text/javascript" src="common.bundle.js"></script>
+
+</body>
+</html>

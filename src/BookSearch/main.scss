@@ -1,0 +1,29 @@
+#app {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    header {
+        background: #fff;
+        margin: 0.5em 0 0.5em 2em;
+
+        h1 {
+            font-size: 100%;
+            //font-weight: bold;
+            color: #aaa;
+        }
+    }
+
+    #main_container {
+        background: hsl(0, 0%, 90%);
+
+        #search_box_container {
+            padding: 1em 0 1em 1.5em;
+        }
+
+        #book_card_container {
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 1em;
+            padding-left: 0.5em;
+        }
+    }
+}
