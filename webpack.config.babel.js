@@ -35,19 +35,6 @@ export default {
     /**
      * エントリーポイントを設定します。
      * https://webpack.js.org/concepts/#entry
-     *
-     * webpack では、1つのバンドルファイルを作成するために、1つのエントリーポイント (例: ./src/sample1/main.js) を指定します。
-     * webpack は、エントリーポイント内の import 文をたどり、そのエントリーポイントが必要とするパッケージや
-     * その他の js ファイルなどの依存関係を集め、1つのバンドルファイル (例: ./dist/sample1.bundle.js) を生成します。
-     *
-     * このオプションでは、次のようにしてエントリーポイントを設定します。
-     * - オブジェクトのキー: `dist/` にバンドルとして出力するアプリの名前 (例: `sample1`)
-     * - オブジェクトの値: エントリーポイントとなるファイル名 (例: `./src/sample1/main.js`)
-     *
-     * たとえば、タイムカードアプリを追加した場合には、次のように項目を追加します。
-     * - アプリに対応する英数字の名前を考える (例:`timecard`)
-     * - `src/timecard/` ディレクトリを作成し、その中にエントリーポイント `main.js` を作成する
-     * - 以下のオブジェクトに `timecard: './src/timecard/main.js',` を追加する
      */
     entry: {
         BookSearch: './src/BookSearch/main.js',
@@ -62,6 +49,7 @@ export default {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: 'common.bundle.js',
+        path: path.resolve(__dirname, 'docs'),
     },
 
     /**
@@ -74,7 +62,7 @@ export default {
          * johnagan/clean-webpack-plugin: A webpack plugin to remove your build folder(s) before building
          * - https://github.com/johnagan/clean-webpack-plugin
          */
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['docs/*.*']),
 
         /**
          * copy-webpack-plugin は、webpack で変換を行わない静的なファイルなどを

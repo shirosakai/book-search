@@ -6,7 +6,7 @@
 // import gapi from 'gapi';
 
 // GoogleBooksAPIのAPIキー
-const MY_API_KEY = 'YOUR_KEY';
+const MY_API_KEY = 'AIzaSyB1uqd4wzARisYjXw8Flam-slAO4W9MIcY';
 
 export default class GetBookData {
     /**
