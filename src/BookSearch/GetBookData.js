@@ -20,7 +20,7 @@ export default class GetBookData {
      * @param {number} startIndex
      */
     static async getFromGoogleBook(searchWord, startIndex = 0) {
-        const reqUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchWord}&startIndex=${startIndex}&key=${MY_API_KEY}`;
+        const reqUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchWord)}&startIndex=${startIndex}&key=${MY_API_KEY}`;
         const resp = await fetch(reqUrl);
         return resp.json();
     }

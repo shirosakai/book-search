@@ -20,7 +20,7 @@ export default {
                 // const inputText = thisElement.getElementsByClassName('search_text')[0].value;
                 const that = this;
                 GetBookData.getAllFromGoogleBook(this.inputText, 30).then(bookDatas => {
-                    console.log(bookDatas);
+                    // console.log(bookDatas);
                     that.$parent.bookDatas = bookDatas;
                 });
             } catch (e) {

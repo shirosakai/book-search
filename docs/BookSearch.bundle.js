@@ -264,7 +264,7 @@ var _default = {
         var that = this;
 
         _GetBookData.default.getAllFromGoogleBook(this.inputText, 30).then(function (bookDatas) {
-          console.log(bookDatas);
+          // console.log(bookDatas);
           that.$parent.bookDatas = bookDatas;
         });
       } catch (e) {
@@ -354,7 +354,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.search_box[data-v-b41526cc] {\n}\n.search_text[data-v-b41526cc] {\n    width: 20em;\n}\n.search_button[data-v-b41526cc] {\n    margin-left: 0.5em;\n}\n", "", {"version":3,"sources":["/Users/shiro/Documents/PROGRAMMING/JavaScript/BookSearch/src/BookSearch/components/src/BookSearch/components/search-box.vue"],"names":[],"mappings":";AA2CA;CACA;AAEA;IACA,YAAA;CACA;AAEA;IACA,mBAAA;CACA","file":"search-box.vue?vue&type=style&index=0&id=b41526cc&scoped=true&lang=css&","sourcesContent":["<template>\n    <div class=\"search_box\">\n        <input class=\"input search_text\" type=\"text\" placeholder=\"Search Text\" v-model=\"inputText\" @keyup.enter=\"showBookList\">\n        <a class=\"button is-dark search_button\" @click=\"showBookList\">Search</a>\n    </div>\n</template>\n\n<script>\nimport Spinner from '../../modules/Spinner/Spinner';\nimport GetBookData from '../GetBookData';\nexport default {\n    name: 'search-box',\n    methods: {\n        showBookList() {\n            //todo スピナーが表示されない\n            const spinner = new Spinner();\n            spinner.show();\n            try {\n                // const thisElement = this.$el;\n                // const inputText = thisElement.getElementsByClassName('search_text')[0].value;\n                const that = this;\n                GetBookData.getAllFromGoogleBook(this.inputText, 30).then(bookDatas => {\n                    console.log(bookDatas);\n                    that.$parent.bookDatas = bookDatas;\n                });\n            } catch (e) {\n                alert(e);\n            } finally {\n                spinner.hide();\n            }\n        },\n    },\n    data() {\n        return {\n            inputText: ''\n        }\n    },\n    mounted() {\n    },\n};\n</script>\n\n<style scoped>\n.search_box {\n}\n\n.search_text {\n    width: 20em;\n}\n\n.search_button {\n    margin-left: 0.5em;\n}\n</style>\n"],"sourceRoot":""}]);
+exports.push([module.i, "\n.search_box[data-v-b41526cc] {\n}\n.search_text[data-v-b41526cc] {\n    width: 20em;\n}\n.search_button[data-v-b41526cc] {\n    margin-left: 0.5em;\n}\n", "", {"version":3,"sources":["/Users/shiro/Documents/PROGRAMMING/JavaScript/BookSearch/src/BookSearch/components/src/BookSearch/components/search-box.vue"],"names":[],"mappings":";AA2CA;CACA;AAEA;IACA,YAAA;CACA;AAEA;IACA,mBAAA;CACA","file":"search-box.vue?vue&type=style&index=0&id=b41526cc&scoped=true&lang=css&","sourcesContent":["<template>\n    <div class=\"search_box\">\n        <input class=\"input search_text\" type=\"text\" placeholder=\"Search Text\" v-model=\"inputText\" @keyup.enter=\"showBookList\">\n        <a class=\"button is-dark search_button\" @click=\"showBookList\">Search</a>\n    </div>\n</template>\n\n<script>\nimport Spinner from '../../modules/Spinner/Spinner';\nimport GetBookData from '../GetBookData';\nexport default {\n    name: 'search-box',\n    methods: {\n        showBookList() {\n            //todo スピナーが表示されない\n            const spinner = new Spinner();\n            spinner.show();\n            try {\n                // const thisElement = this.$el;\n                // const inputText = thisElement.getElementsByClassName('search_text')[0].value;\n                const that = this;\n                GetBookData.getAllFromGoogleBook(this.inputText, 30).then(bookDatas => {\n                    // console.log(bookDatas);\n                    that.$parent.bookDatas = bookDatas;\n                });\n            } catch (e) {\n                alert(e);\n            } finally {\n                spinner.hide();\n            }\n        },\n    },\n    data() {\n        return {\n            inputText: ''\n        }\n    },\n    mounted() {\n    },\n};\n</script>\n\n<style scoped>\n.search_box {\n}\n\n.search_text {\n    width: 20em;\n}\n\n.search_button {\n    margin-left: 0.5em;\n}\n</style>\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -709,7 +709,7 @@ function () {
             switch (_context.prev = _context.next) {
               case 0:
                 startIndex = _args.length > 1 && _args[1] !== undefined ? _args[1] : 0;
-                reqUrl = "https://www.googleapis.com/books/v1/volumes?q=".concat(searchWord, "&startIndex=").concat(startIndex, "&key=").concat(MY_API_KEY);
+                reqUrl = "https://www.googleapis.com/books/v1/volumes?q=".concat(encodeURIComponent(searchWord), "&startIndex=").concat(startIndex, "&key=").concat(MY_API_KEY);
                 _context.next = 4;
                 return fetch(reqUrl);
 
@@ -1072,7 +1072,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************************************************!*\
   !*** ./src/BookSearch/components/search-box.vue?vue&type=template&id=b41526cc&scoped=true& ***!
   \*********************************************************************************************/
-/*! no static exports found */
+/*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
