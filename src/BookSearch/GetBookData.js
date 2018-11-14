@@ -27,18 +27,18 @@ export default class GetBookData {
 
     /**
      * 検索ワードに該当するすべての書籍情報の一覧を取得する
-     * @param {string} searchword
+     * @param {string} searchWord
      * @param {number} limit 上限件数
      * @return {Promise<Array>}
      */
-    static async getAllFromGoogleBook(searchword, limit = 100) {
+    static async getAllFromGoogleBook(searchWord, limit = 100) {
         const resultItems = [];
 
         let index = 0;
         let itemCnt = 0;
 
         while (true) {
-            const resp = await GetBookData.getFromGoogleBook(searchword, index);
+            const resp = await GetBookData.getFromGoogleBook(searchWord, index);
             if (resp.items != null) {
                 resultItems.push(...resp.items);
                 itemCnt = resp.items.length;

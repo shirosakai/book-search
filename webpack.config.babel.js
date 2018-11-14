@@ -18,7 +18,6 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
  * postcss で使用するプラグインをインポート
  */
 import cssnext from 'postcss-cssnext';
-import stylelint from 'stylelint';
 
 
 import VueLoaderPlugin from 'vue-loader/lib/plugin';

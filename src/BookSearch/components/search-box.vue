@@ -16,12 +16,9 @@ export default {
             const spinner = new Spinner();
             spinner.show();
             try {
-                // const thisElement = this.$el;
-                // const inputText = thisElement.getElementsByClassName('search_text')[0].value;
                 const that = this;
-                GetBookData.getAllFromGoogleBook(this.inputText, 30).then(bookDatas => {
-                    // console.log(bookDatas);
-                    that.$parent.bookDatas = bookDatas;
+                GetBookData.getAllFromGoogleBook(that.inputText, 30).then(bookDatas => {
+                    that.setBookDatas(bookDatas)
                 });
             } catch (e) {
                 alert(e);
@@ -29,6 +26,13 @@ export default {
                 spinner.hide();
             }
         },
+        /**
+         * 本データを親コンポーネントにセット
+         * @param {object[]} bookDatas
+         */
+        setBookDatas(bookDatas) {
+            this.$emit('set-book-datas', bookDatas);
+        }
     },
     data() {
         return {

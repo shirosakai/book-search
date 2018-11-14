@@ -11,7 +11,7 @@ const template = `
     <div id="main_container">
         <div id="search_box_container">
         <!--{{searchWord}}-->
-            <search-box></search-box>
+            <search-box @set-book-datas="setBookDatas"></search-box>
         </div>
         <div id="book_card_container">
             <template v-for="book in bookDatas">
